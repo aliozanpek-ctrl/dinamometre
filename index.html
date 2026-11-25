@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f2ec">
+<title>Dinamometre Simülasyonu</title>
+<style>
+:root{--paper:#f4f2ec;--white:#fffefa;--ink:#242a2c;--muted:#747c7b;--line:#d8d8d0;--green:#376d55;--red:#cf554b;--blue:#597b90;--shadow:0 14px 40px #23292312}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}.page{max-width:1080px;margin:auto;padding:0 30px 44px}.top{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.logo{font-size:14px;letter-spacing:.12em;font-weight:700}.logo span{font-weight:400;color:var(--muted);letter-spacing:.04em;margin-left:10px}.top-note{color:var(--muted);font-size:12px}.intro{padding:38px 0 25px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--green);font-weight:700}h1{font-weight:500;font-size:36px;letter-spacing:-.04em;margin:10px 0 8px}.intro p{font-size:14px;line-height:1.65;color:#69706f;margin:0;max-width:620px}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);gap:20px;align-items:stretch}.panel{background:var(--white);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}.panel-title{height:48px;padding:0 18px;border-bottom:1px solid #e8e7e0;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.04em}.small{font-size:11px;color:var(--muted);font-weight:400}.experiment{height:480px;position:relative;overflow:hidden;background:linear-gradient(#fffefa,#faf9f5);border-radius:0 0 12px 12px}.experiment:after{content:"";position:absolute;bottom:35px;left:8%;right:8%;height:1px;background:#e2e0d9}.support{position:absolute;top:36px;left:50%;width:250px;height:10px;transform:translateX(-50%);border-radius:4px;background:linear-gradient(#a9b0ae,#747c7a);box-shadow:0 3px 5px #0002}.support:after{content:"";position:absolute;left:calc(50% - 3px);top:8px;width:6px;height:22px;background:linear-gradient(90deg,#7c8583,#c1c6c1,#7c8583)}.device{position:absolute;top:65px;left:50%;transform:translateX(-50%);width:174px;display:flex;align-items:center;flex-direction:column;z-index:1}.tube{height:270px;width:158px;border:2px solid #939c99;border-radius:12px 12px 7px 7px;background:linear-gradient(90deg,#eef1eddd,#fffffff0 16%,#f8faf7e8 80%,#e3e8e3cc);box-shadow:inset 5px 0 9px #fff,inset -5px 0 9px #bdc6c044,0 3px 7px #00000012;position:relative;overflow:hidden}.tube-cap{position:absolute;left:25px;right:25px;top:-2px;height:9px;border-radius:0 0 4px 4px;background:#747e7b;z-index:2}.zero-label{position:absolute;top:8px;right:7px;font-size:9px;color:#69716f;letter-spacing:.08em}.scale{position:absolute;top:28px;bottom:9px;left:12px;width:55px;display:flex;flex-direction:column;justify-content:space-between}.tick{height:1px;width:15px;background:#69716f;position:relative;flex:1}.tick.mid{width:10px;background:#a0a6a1}.tick.minor{width:6px;background:#c0c4be}.tick b{position:absolute;right:19px;top:-7px;font-size:10px;line-height:14px;font-weight:400;color:#414846;font-family:Arial,sans-serif}.spring{position:absolute;top:26px;left:83px;width:27px;height:32px;transition:height .4s cubic-bezier(.2,.75,.3,1);background:repeating-linear-gradient(135deg,transparent 0 5px,#8a9592 5.5px 7px,transparent 7.5px 11px),repeating-linear-gradient(45deg,transparent 0 5px,#b1bab7 5.5px 7px,transparent 7.5px 11px);filter:drop-shadow(0 1px 0 #fff)}.pointer{position:absolute;left:56px;top:58px;width:58px;height:3px;background:var(--red);z-index:3;transition:top .4s cubic-bezier(.2,.75,.3,1);box-shadow:0 1px 1px #2223}.pointer:before{content:"";position:absolute;left:-8px;top:-4px;border-top:5.5px solid transparent;border-bottom:5.5px solid transparent;border-right:8px solid var(--red)}.hook-stem{width:7px;height:18px;background:linear-gradient(90deg,#7d8582,#c2c7c2,#747d79);border-radius:0 0 3px 3px}.hook{height:29px;width:27px;border:4px solid #858e8b;border-top:0;border-left-color:transparent;border-radius:0 0 16px 16px;margin-top:-1px;position:relative}.weight{width:76px;height:65px;margin-top:1px;border:1px solid #59625f;border-radius:6px 6px 11px 11px;background:linear-gradient(105deg,#89928f,#d2d6ce 23%,#9ca5a0 72%,#77817d);box-shadow:inset 0 1px #ffffffb3,0 5px 10px #0002;display:flex;align-items:center;justify-content:center;position:relative;transition:transform .2s}.weight:before{content:"";position:absolute;top:-5px;width:22px;height:6px;border-radius:50%;background:#89918e;border:1px solid #626b67}.weight-value{font-size:12px;font-weight:700;color:#343b39}.weight-unit{position:absolute;bottom:9px;font-size:8px;letter-spacing:.12em;color:#47504c}.device-label{font-size:10px;letter-spacing:.09em;color:#59615e;margin-top:8px}.scale-caption{position:absolute;left:18px;right:18px;bottom:13px;display:flex;justify-content:space-between;font-size:10px;color:#858b88}.side{display:flex;flex-direction:column;gap:16px}.control-body{padding:19px}.label{font-size:12px;font-weight:700}.help{font-size:11px;color:var(--muted);line-height:1.5;margin-top:6px}.value-line{display:flex;justify-content:space-between;align-items:baseline;margin-top:19px}.mass-value{font-size:23px;font-variant-numeric:tabular-nums}.mass-value small{font-size:12px;color:var(--muted)}input[type=range]{width:100%;accent-color:var(--green);margin:15px 0 10px;cursor:pointer}.presets{display:flex;gap:7px;flex-wrap:wrap}.preset{min-height:34px;padding:0 11px;border:1px solid var(--line);border-radius:6px;background:#faf9f5;color:#59615e;font-size:11px;cursor:pointer}.preset:hover,.preset.active{border-color:#8ca594;color:var(--green);background:#edf3ed}.field{margin-top:20px}.field label{display:block;font-size:10px;color:var(--muted);letter-spacing:.08em;margin-bottom:7px}.select{width:100%;height:39px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:#fffefa;color:var(--ink);font-size:12px}.result{padding:18px 19px}.result-title{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}.force{margin-top:8px;color:var(--green);font-size:38px;letter-spacing:-.05em;font-variant-numeric:tabular-nums}.force span{font-size:16px;letter-spacing:0;color:#66706d}.result-rule{border-top:1px solid #e8e7e0;margin:14px 0 11px}.details{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}.details strong{font-weight:500;color:var(--ink)}.formula{padding:17px 19px;font-size:12px;line-height:1.6;color:#65706b}.formula strong{color:var(--green);font-family:Georgia,serif;font-size:17px;font-weight:500}.footer{border-top:1px solid var(--line);margin-top:23px;padding-top:13px;display:flex;justify-content:space-between;color:#858b88;font-size:10px}.warning{font-size:11px;color:var(--red);margin-top:10px;display:none}.warning.show{display:block}@media(max-width:760px){.page{padding:0 17px 30px}.layout{grid-template-columns:1fr}.experiment{height:455px}.side{display:grid;grid-template-columns:1fr 1fr}.control-panel{grid-row:span 2}}@media(max-width:500px){.top-note{display:none}.logo span{display:block;margin:4px 0 0;font-size:10px}.intro{padding-top:28px}h1{font-size:31px}.side{display:flex}.experiment{height:430px}.support{width:215px}.scale-caption{font-size:9px}}
+/* Reference-shaped spring dynamometer */
+.experiment{height:550px}
+.support{display:none}
+.device{top:12px;width:118px}
+.top-loop{width:47px;height:53px;border:4px solid #858e8b;border-bottom:0;border-radius:25px 25px 0 0;margin-bottom:-10px;position:relative;z-index:2;filter:drop-shadow(0 1px 1px #0002)}
+.tube{width:94px;height:302px;border-radius:10px 10px 13px 13px}
+.tube-cap{left:17px;right:17px;height:10px;background:linear-gradient(#eef0ea,#c4cac4);border:1px solid #a8b0aa}
+.scale{top:34px;bottom:13px;left:9px;width:39px}
+.tick{width:7px;background:#69716f;flex:1}
+.tick.minor{width:6px;background:#a9afaa}
+.tick.major{width:13px;background:#535b58}
+.tick b{right:auto;left:16px;top:-7px;font-size:9px;font-weight:500;color:#303735}
+.zero-label{top:12px;right:7px;font-size:8px}
+.spring{top:26px;left:57px;width:19px;background:repeating-linear-gradient(135deg,transparent 0 4px,#818a87 4.5px 6px,transparent 6.5px 9px),repeating-linear-gradient(45deg,transparent 0 4px,#aeb5b0 4.5px 6px,transparent 6.5px 9px)}
+.pointer{left:24px;width:58px;height:2px}
+.pointer:before{left:-7px;top:-4px;border-top-width:4px;border-bottom-width:4px;border-right-width:7px}
+.hook-stem{height:16px}.hook{height:28px;width:26px;border-width:3px;border-top:0;border-left-color:transparent}.weight{width:62px;height:48px;margin-top:0}.weight-unit{bottom:6px;font-size:7px}.weight-value{font-size:11px}.device-label{font-size:8px;margin-top:5px;letter-spacing:.08em}
+@media(max-width:760px){.experiment{height:530px}}
+@media(max-width:500px){.experiment{height:520px}}.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.control-grid .field{min-width:0}.custom-gravity{display:flex;align-items:center;gap:8px;margin-top:8px}.custom-gravity input{min-width:0;flex:1}.custom-gravity span{font-size:11px;color:var(--muted)}.secondary{display:none}.tube.dual-springs .spring:not(.secondary){left:49px;width:13px}.tube.dual-springs .spring.secondary{display:block;left:68px;width:13px}.tick b{white-space:nowrap}.field{min-width:0}.reset{width:100%;margin-top:14px;padding:10px;border:1px solid var(--line);border-radius:6px;background:#faf9f5;color:#59615e;font-size:11px;cursor:pointer}.reset:hover{border-color:#8ca594;color:var(--green)}.experiment{height:550px}.load-assembly{display:flex;align-items:center;flex-direction:column;position:relative}
+@media(max-width:760px){.experiment{height:550px}}
+@media(max-width:500px){.experiment{height:550px}}.custom-gravity[hidden]{display:none}.experiment{height:550px}.spring{background:repeating-linear-gradient(to bottom,#707a76 0 1px,#e3e7e3 1px 2px,#87918c 2px 3px,transparent 3px 8px);background-size:100% var(--spring-pitch,8px);border-radius:35%;box-shadow:0 0 2px #58625e}.spring.secondary{filter:drop-shadow(0 0 1px #66716d)}.load-assembly{transition:transform .4s cubic-bezier(.2,.75,.3,1)}
+@media(max-width:760px){.experiment{height:550px}}
+@media(max-width:500px){.experiment{height:550px}}.connector{position:absolute;top:345px;left:calc(50% - 3px);width:6px;height:0;background:linear-gradient(90deg,#717a77 0%,#e0e3df 35%,#a2aaa6 70%,#626b68 100%);z-index:1;transition:height .4s cubic-bezier(.2,.75,.3,1)}.tube{z-index:2}.load-assembly{z-index:2}.spring{background:repeating-linear-gradient(to bottom,transparent 0 3px,#707976 3px 4px,#d9ddda 4px 5px,#8a938f 5px 6px,transparent 6px 10px);filter:drop-shadow(0 1px 1px #6b7470)}.experiment{height:760px}@media(max-width:760px){.experiment{height:760px}}@media(max-width:500px){.experiment{height:760px}}.spring{background-size:100% var(--spring-pitch,8px);background-repeat:repeat-y}.inner-rod{position:absolute;left:63px;top:34px;width:6px;height:268px;background:linear-gradient(90deg,#707975 0%,#e4e7e3 35%,#9da6a1 70%,#626b68 100%);z-index:1;transition:top .4s cubic-bezier(.2,.75,.3,1),height .4s cubic-bezier(.2,.75,.3,1)}.load-assembly{transition:transform .4s cubic-bezier(.2,.75,.3,1)}.connector{position:relative;top:auto;left:auto;flex:none;width:6px;height:0;margin:0;background:linear-gradient(90deg,#717a77 0%,#e0e3df 35%,#a2aaa6 70%,#626b68 100%);z-index:auto}.custom-mass{margin-top:12px}.custom-mass input{width:100%}.break-button{width:100%;margin-top:12px;padding:10px;border:1px solid #c8786f;border-radius:6px;background:#fff6f4;color:#a43f36;font-size:11px;cursor:pointer}.break-button:hover:not(:disabled){background:#fde8e4}.break-button:disabled{opacity:.7;cursor:not-allowed}.tube.broken .spring{mask-image:linear-gradient(to bottom,#000 0 46%,transparent 47% 54%,#000 55% 100%);transform:rotate(3deg) skewX(-3deg);filter:drop-shadow(0 1px 1px #913d36)}.load-assembly.broken .connector{width:14px;background:linear-gradient(90deg,#735f55 0%,#e0e3df 30%,#9da6a1 62%,#72574d 100%);clip-path:polygon(35% 0,50% 15%,70% 25%,40% 40%,25% 55%,50% 70%,70% 85%,45% 100%,65% 100%,92% 85%,78% 70%,60% 55%,82% 40%,95% 25%,75% 15%,65% 0);filter:drop-shadow(0 1px 1px #70534a)}
+.mode-tabs{display:flex;gap:8px;margin:14px 0 0;border-bottom:1px solid var(--line)}.mode-tab{padding:12px 16px;border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);font-size:13px;cursor:pointer}.mode-tab.active{color:var(--green);border-color:var(--green);font-weight:700}.sim-view[hidden]{display:none}.balance-stage{height:480px;position:relative;overflow:hidden;background:linear-gradient(#fffefa,#faf9f5);border-radius:0 0 12px 12px}.balance-scale{position:absolute;inset:0 7% 20px}.balance-beam{position:absolute;left:10%;right:10%;top:120px;height:12px;border:1px solid #818985;border-radius:6px;background:linear-gradient(#e5e9e3,#929b95 45%,#c4cbc3);box-shadow:0 4px 7px #0002;transform:rotate(0deg);transform-origin:50% 50%;transition:transform .45s cubic-bezier(.2,.75,.3,1);z-index:2}.beam-mark{position:absolute;width:10px;height:10px;border-radius:50%;background:#5b665f;left:calc(50% - 5px);top:0}.balance-string{position:absolute;top:10px;width:2px;height:135px;background:linear-gradient(90deg,#8e9690,#c2c8c0,#777f7a);transform-origin:top center}.left-string{left:12%}.right-string{right:12%}.pan{position:absolute;top:141px;width:112px;height:50px;border-bottom:5px solid #7d8780;border-radius:0 0 50% 50%;display:flex;justify-content:center}.left-pan{left:calc(12% - 55px)}.right-pan{right:calc(12% - 55px)}.pan:before,.pan:after{content:"";position:absolute;top:-1px;width:2px;height:48px;background:#a0a8a2}.pan:before{left:0}.pan:after{right:0}.pan-dish{position:absolute;top:12px;min-width:54px;max-width:100px;height:31px;padding:0 8px;border:1px solid #78827b;border-radius:5px 5px 20px 20px;background:linear-gradient(110deg,#a9b1aa,#edf0e8 35%,#aab2aa 85%);box-shadow:0 3px 5px #0002;display:flex;justify-content:center;align-items:center;color:#3f4842;font-size:11px;font-weight:700}.fulcrum{position:absolute;left:50%;top:121px;transform:translateX(-50%);width:100px;height:220px;z-index:1;display:flex;align-items:center;flex-direction:column}.fulcrum-cap{width:22px;height:14px;background:linear-gradient(90deg,#737c77,#d0d5cf,#77817b);clip-path:polygon(50% 0,100% 100%,0 100%)}.fulcrum-leg{width:8px;height:174px;background:linear-gradient(90deg,#747d77,#c9cec8 45%,#707972);clip-path:polygon(0 0,100% 0,58% 100%,42% 100%)}.fulcrum-foot{width:90px;height:10px;margin-top:-1px;border-radius:50%;background:linear-gradient(#aeb6ae,#7d867f);box-shadow:0 3px 5px #0002}.balance-caption{position:absolute;left:18px;right:18px;bottom:14px;display:flex;justify-content:space-between;font-size:11px;color:#737c77}.balance-help{font-size:12px;color:var(--muted);line-height:1.5;margin:0}.balance-control{margin-top:20px;padding-top:16px;border-top:1px solid #e8e7e0}.balance-control>label{display:block;font-size:10px;color:var(--muted);letter-spacing:.08em;margin-bottom:8px}.balance-value{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px}.balance-value input{width:110px;padding:5px 7px;border:1px solid var(--line);border-radius:5px;font-size:17px;color:var(--ink)}.balance-control input[type=range]{margin:8px 0}.balance-preset{min-height:30px;padding:0 8px;border:1px solid var(--line);border-radius:5px;background:#faf9f5;color:#59615e;font-size:10px;cursor:pointer}.balance-preset:hover{border-color:#8ca594;color:var(--green)}
+</style>
+</head>
+<body><div class="page">
+<header class="top"><div class="logo">FİZİK LAB <span>ETKİLEŞİMLİ SİMÜLASYON</span></div><div class="top-note">Kuvvet ve yayların ölçümü</div></header>
+<nav class="mode-tabs" aria-label="Simülasyon seçimi"><button class="mode-tab active" type="button" data-view="dynamometerView">Dinamometre</button><button class="mode-tab" type="button" data-view="balanceView">Çift kollu terazi</button></nav>
+<section class="intro"><div class="eyebrow">KUVVET · YAY · ÖLÇÜM</div><h1>Dinamometre Simülasyonu</h1><p>Bir ağırlığı dinamometreye as ve yayın uzamasını izle. Kütleyi ya da yerçekimini değiştirerek ölçülen kuvveti karşılaştır.</p></section>
+<section id="dynamometerView" class="sim-view"><main class="layout"><section class="panel"><div class="panel-title"><span>Dinamometre</span><span class="small" id="scaleLabel">Ölçek: 0–30 N</span></div><div class="experiment"><div class="device"><div class="top-loop" aria-hidden="true"></div><div class="tube"><div class="tube-cap"></div><span class="zero-label" id="scaleUnit">N</span><div class="scale" id="scale" aria-hidden="true"></div><div class="spring" id="spring"></div><div class="spring secondary" id="spring2"></div><div class="inner-rod" id="innerRod" aria-hidden="true"></div><div class="pointer" id="pointer"></div></div><div class="load-assembly" id="loadAssembly"><div class="connector" id="connector" aria-hidden="true"></div><div class="hook-stem"></div><div class="hook"></div><div class="weight"><span class="weight-value" id="weightValue">29,43</span><span class="weight-unit" id="weightUnit">N</span></div></div></div><div class="scale-caption"><span>Yay uzaması: <b id="stretch">24,53 cm</b></span><span>Ölçüm: <b id="stateText">Dengede</b></span></div></div></section>
+<div class="side"><section class="panel control-panel"><div class="panel-title">Ağırlığı ayarla</div><div class="control-body"><div class="label" id="inputTitle">Asılı kuvvet</div><div class="help">Kütle veya kuvvet olarak giriş yap; ölçümü seçilen birimde gör.</div><div class="field input-mode"><label for="inputMode">GİRİŞ TÜRÜ</label><select id="inputMode" class="select"><option value="force" selected>Kuvvet · seçili birim</option><option value="mass">Kütle · g / kg</option></select></div><div class="value-line"><div class="mass-value"><span id="massValue">29,43</span> <small id="massValueUnit">N</small></div></div><input id="massSlider" type="range" min="0" max="98.1" step="0.01" value="29.43" aria-label="Asılı kuvvet N cinsinden"><div class="field custom-mass"><label for="massEntry" id="massEntryLabel">ÖZEL KUVVET (N)</label><input id="massEntry" class="select" type="number" min="0" max="98.1" step="0.01" value="29.43" aria-label="Özel kuvvet N cinsinden"></div><div class="presets"><button type="button" class="preset" data-mass="0">0,00 N</button><button type="button" class="preset" data-mass="250">2,45 N</button><button type="button" class="preset" data-mass="500">4,91 N</button><button type="button" class="preset" data-mass="1000">9,81 N</button><button type="button" class="preset active" data-mass="3000">29,43 N</button></div><div class="control-grid"><div class="field"><label for="springType">YAY TİPİ</label><select id="springType" class="select"><option value="soft">Yumuşak · 20 N/m</option><option value="standard">Standart · 40 N/m</option><option value="stiff">Sert · 80 N/m</option><option value="extra" selected>Çok sert · 120 N/m</option><option value="custom">Özel yay</option></select><div id="customSpringWrap" class="custom-gravity" hidden><input id="customSpringK" class="select" type="number" min="1" max="10000" step="1" value="150" aria-label="Özel yay sabiti"><span>N/m</span></div><div class="field spring-material-field"><label for="springMaterial">YAY MALZEMESİ</label><select id="springMaterial" class="select"><option value="steel">Yay çeliği</option><option value="iron">Demir</option><option value="copper">Bakır</option><option value="brass">Pirinç</option><option value="aluminum">Alüminyum</option><option value="titanium">Titanyum</option></select></div></div><div class="field"><label for="springCount">YAY SAYISI</label><select id="springCount" class="select"><option value="1" selected>1 yay</option><option value="2">2 paralel yay</option></select></div></div>
+<div class="field"><label for="unit">KUVVET BİRİMİ</label><select id="unit" class="select"><option value="N">Newton (N)</option><option value="kgf">Kilogram-kuvvet (kgf)</option><option value="gf">Gram-kuvvet (gf)</option></select></div><div class="field"><label for="gravity">YERÇEKİMİ</label><select id="gravity" class="select"><option value="9.81">Dünya · 9,81 m/s²</option><option value="1.62">Ay · 1,62 m/s²</option><option value="3.71">Mars · 3,71 m/s²</option><option value="24.79">Jüpiter · 24,79 m/s²</option><option value="custom">Özel yerçekimi</option></select><div id="customGravity" class="custom-gravity" hidden><input id="customG" class="select" type="number" min="0.01" max="100" step="0.01" value="9.81" aria-label="Özel yerçekimi, metre bölü saniye kare"><span>m/s²</span></div></div><button type="button" class="break-button" id="breakSpring">Yayı elle kopar</button><div class="warning" id="warning" role="status">Yay koptu; mil eğildi.</div><button type="button" class="reset" id="reset">Varsayılan ayarlara dön</button></div></section>
+<section class="panel"><div class="panel-title">Ölçüm sonucu</div><div class="result"><div class="result-title">Ağırlık kuvveti</div><div class="force"><span id="force">29,43</span> <span id="forceUnit">N</span></div><div class="result-rule"></div><div class="details"><span>Kütle</span><strong id="massKg">3,000 kg</strong></div><div class="details" style="margin-top:9px"><span>Yerçekimi</span><strong id="gravityValue">9,81 m/s²</strong></div><div class="details" style="margin-top:9px"><span>Etkin yay sabiti</span><strong id="kValue">120 N/m</strong></div><div class="details" style="margin-top:9px"><span>Skala kapasitesi</span><strong id="capacityValue">30 N</strong></div></div></section>
+<section class="panel formula"><strong>F = m × g &nbsp; · &nbsp; x = F / k</strong><br>Ağırlık kuvveti kütle ve yerçekiminden hesaplanır. Uzama, kuvvetin toplam yay sabitine (k) bölünmesiyle bulunur; paralel yaylar k değerini toplar.</section></div></main></section>
+<section id="balanceView" class="sim-view" hidden><main class="layout"><section class="panel"><div class="panel-title"><span>Çift kollu terazi</span><span class="small">Eşit kollu · kütle karşılaştırması</span></div><div class="balance-stage"><div class="balance-scale" aria-label="İki kefeli terazi"><div class="balance-beam" id="balanceBeam"><div class="beam-mark"></div><div class="balance-string left-string"></div><div class="balance-string right-string"></div><div class="pan left-pan"><div class="pan-dish"><span id="leftPanLabel">0 g</span></div></div><div class="pan right-pan"><div class="pan-dish"><span id="rightPanLabel">0 g</span></div></div></div><div class="fulcrum"><div class="fulcrum-cap"></div><div class="fulcrum-leg"></div><div class="fulcrum-foot"></div></div></div><div class="balance-caption"><span id="balanceStatus">Denge sağlandı</span><span id="torqueInfo">Moment farkı: 0 N·m</span></div></div></section><div class="side"><section class="panel"><div class="panel-title">Kefelerdeki kütle</div><div class="control-body"><p class="balance-help">İki kefeye ayrı ağırlık ver. Terazinin kolu kütle farkına göre eğilir.</p><div class="balance-control"><label for="leftMass">SOL KEFE</label><div class="balance-value"><input id="leftMass" type="number" min="0" step="10" value="0"><span>g</span></div><input id="leftSlider" type="range" min="0" max="5000" step="10" value="0"><div class="presets"><button class="balance-preset" type="button" data-side="left" data-mass="0">Boş</button><button class="balance-preset" type="button" data-side="left" data-mass="100">100 g</button><button class="balance-preset" type="button" data-side="left" data-mass="500">500 g</button><button class="balance-preset" type="button" data-side="left" data-mass="1000">1 kg</button></div></div><div class="balance-control"><label for="rightMass">SAĞ KEFE</label><div class="balance-value"><input id="rightMass" type="number" min="0" step="10" value="0"><span>g</span></div><input id="rightSlider" type="range" min="0" max="5000" step="10" value="0"><div class="presets"><button class="balance-preset" type="button" data-side="right" data-mass="0">Boş</button><button class="balance-preset" type="button" data-side="right" data-mass="100">100 g</button><button class="balance-preset" type="button" data-side="right" data-mass="500">500 g</button><button class="balance-preset" type="button" data-side="right" data-mass="1000">1 kg</button></div></div><div class="field"><label for="balanceGravity">YERÇEKİMİ</label><select id="balanceGravity" class="select"><option value="9.81">Dünya · 9,81 m/s²</option><option value="1.62">Ay · 1,62 m/s²</option><option value="3.71">Mars · 3,71 m/s²</option><option value="24.79">Jüpiter · 24,79 m/s²</option><option value="custom">Özel yerçekimi</option></select><div id="balanceCustomGravity" class="custom-gravity" hidden><input id="balanceCustomG" class="select" type="number" min="0.01" max="100" step="0.01" value="9.81" aria-label="Özel yerçekimi"><span>m/s²</span></div></div><button type="button" class="reset" id="balanceReset">Kefeleri boşalt</button></div></section><section class="panel formula"><strong>τ = m × g × r</strong><br>İki kolun uzunluğu eşittir. Eşit kütlelerde momentler dengelenir; ağır kefe aşağı iner.</section></div></main></section>
+<footer class="footer"><span>FİZİK LAB · MEKANİK</span><span class="footer-unit">Birimi: Newton (N)</span></footer></div>
+<script>
+(()=>{
+  const $=selector=>document.querySelector(selector);
+  const slider=$('#massSlider'),massEntry=$('#massEntry'),gravity=$('#gravity'),customG=$('#customG');
+  const springType=$('#springType'),springCount=$('#springCount'),unit=$('#unit'),inputMode=$('#inputMode'),tube=$('.tube'),scale=$('#scale');
+  const springData={soft:{name:'Yumuşak',k:20},standard:{name:'Standart',k:40},stiff:{name:'Sert',k:80},extra:{name:'Çok sert',k:120},custom:{name:'Özel',k:150}};
+  const customSpringK=$('#customSpringK'),customSpringWrap=$('#customSpringWrap'),springMaterial=$('#springMaterial');
+  const materialFactor={steel:1,iron:.9,copper:.6,brass:.5,aluminum:.35,titanium:.58};
+  const units={N:{factor:1,label:'N',digits:0,step:.01},kgf:{factor:1/9.80665,label:'kgf',digits:2,step:.01},gf:{factor:1000/9.80665,label:'gf',digits:0,step:1}};
+  let massGrams=3000,forceInputN=29.43,springBroken=false,brokenPosition=0;
+  const format=(value,digits=2)=>new Intl.NumberFormat('tr-TR',{minimumFractionDigits:digits,maximumFractionDigits:digits}).format(value);
+  function gravityValue(){return gravity.value==='custom'?Math.max(.01,Number(customG.value)||9.81):Number(gravity.value)}
+  function makeScale(capacity,unitInfo){
+    scale.replaceChildren();
+    const divisions=Math.round(capacity),labelStep=capacity>30?10:5;
+    for(let i=0;i<=divisions;i++){
+      const mark=document.createElement('div');
+      mark.className='tick'+(i%labelStep===0?' major':' minor');
+      if(i%labelStep===0||i===divisions){const label=document.createElement('b');label.textContent=format(i*unitInfo.factor,unitInfo.digits);mark.appendChild(label)}
+      scale.appendChild(mark);
+    }
+    $('#scaleLabel').textContent='Ölçek: 0–'+format(capacity*unitInfo.factor,unitInfo.digits)+' '+unitInfo.label;
+  }
+  function update(){
+    const g=gravityValue(),unitInfo=units[unit.value],massMode=inputMode.value==='mass';
+    const spring=springData[springType.value],count=Number(springCount.value),singleK=springType.value==='custom'?Math.max(1,Number(customSpringK.value)||150):spring.k,k=singleK*count*materialFactor[springMaterial.value];
+    customSpringWrap.hidden=springType.value!=='custom';
+    const force=massMode?massGrams/1000*g:forceInputN;
+    massGrams=force/g*1000;
+    const extension=force/k,travelLimit=.25,capacity=k*travelLimit;
+    const displayForce=force*unitInfo.factor,displayCapacity=capacity*unitInfo.factor;
+    const position=Math.min(1,extension/travelLimit)*253;
+    if(!springBroken&&extension>travelLimit){springBroken=true;brokenPosition=253}
+    const shownPosition=springBroken?brokenPosition:position;
+    const shownDigits=unit.value==='gf'?0:2;
+    makeScale(capacity,unitInfo);
+    $('#inputTitle').textContent=massMode?'Asılı kütle':'Asılı kuvvet';
+    $('#massValue').textContent=massMode?format(massGrams>=1000?massGrams/1000:massGrams,massGrams>=1000?2:(Number.isInteger(massGrams)?0:1)):format(displayForce,shownDigits);
+    $('#massValueUnit').textContent=massMode?(massGrams>=1000?'kg':'g'):unitInfo.label;
+    $('#massEntryLabel').textContent=massMode?'ÖZEL KÜTLE (g)':'ÖZEL KUVVET ('+unitInfo.label+')';
+    $('#massEntry').setAttribute('aria-label',massMode?'Özel kütle gram cinsinden':'Özel kuvvet '+unitInfo.label+' cinsinden');
+    $('#massKg').textContent=format(massGrams/1000,3)+' kg';
+    $('#gravityValue').textContent=format(g,2)+' m/s²';
+    $('#weightValue').textContent=format(displayForce,shownDigits);
+    $('#weightUnit').textContent=unitInfo.label;
+    $('#force').textContent=format(displayForce,2);
+    $('#forceUnit').textContent=unitInfo.label;
+    $('#scaleUnit').textContent=unitInfo.label;
+    $('#kValue').textContent=format(k,0)+' N/m';
+    $('#capacityValue').textContent=format(displayCapacity,unitInfo.digits)+' '+unitInfo.label;
+    $('#pointer').style.top=(34+shownPosition)+'px';
+    $('#connector').style.height=shownPosition+'px';
+    $('#spring').style.height=Math.max(14,shownPosition+8)+'px';
+    $('#spring').style.setProperty('--spring-pitch',Math.max(4,(shownPosition+8)/12)+'px');
+    $('#spring2').style.height=Math.max(14,shownPosition+8)+'px';
+    $('#spring2').style.setProperty('--spring-pitch',Math.max(4,(shownPosition+8)/12)+'px');
+    $('#innerRod').style.top=(34+shownPosition)+'px';
+    $('#innerRod').style.height=Math.max(0,268-shownPosition)+'px';
+    $('#stretch').textContent=format(extension*100,2)+' cm';
+    tube.classList.toggle('dual-springs',count===2);
+    tube.classList.toggle('broken',springBroken);
+    $('#loadAssembly').classList.toggle('broken',springBroken);
+    $('#breakSpring').disabled=false;
+    $('#breakSpring').textContent=springBroken?'Yayı onar':'Yayı elle kopar';
+    $('#warning').classList.toggle('show',springBroken);
+    $('#warning').textContent=springBroken?'Yay koptu; demir mil yamuldu. Varsayılan ayarlara dönerek düzeneği yenile.':'';
+    $('#stateText').textContent=springBroken?'Yay koptu · mil yamuk':'Dengede';
+    $('#customGravity').hidden=gravity.value!=='custom';
+    const inputMax=massMode?Math.max(10000,massGrams):Math.max(10000/1000*g*unitInfo.factor,displayForce);
+    slider.min=0;slider.max=inputMax;slider.step=massMode?1:unitInfo.step;
+    slider.value=massMode?massGrams:displayForce;
+    massEntry.type='number';massEntry.min=0;massEntry.max=inputMax;massEntry.step=massMode?1:unitInfo.step;
+    massEntry.value=massMode?massGrams:displayForce;
+    slider.setAttribute('aria-label',massMode?'Asılı kütle gram cinsinden':'Asılı kuvvet '+unitInfo.label+' cinsinden');
+    document.querySelectorAll('.preset').forEach(button=>{
+      const presetGrams=Number(button.dataset.mass),presetForce=presetGrams/1000*g*unitInfo.factor;
+      button.textContent=massMode?(presetGrams>=1000?format(presetGrams/1000,0)+' kg':presetGrams+' g'):format(presetForce,shownDigits)+' '+unitInfo.label;
+      button.classList.toggle('active',Math.abs(massGrams-presetGrams)<5);
+    });
+    document.querySelector('footer .footer-unit').textContent='Birimi: '+unitInfo.label;
+  }
+  slider.addEventListener('input',()=>{
+    if(inputMode.value==='mass')massGrams=Number(slider.value)||0;
+    else forceInputN=(Number(slider.value)||0)/units[unit.value].factor;
+    update();
+  });
+  massEntry.addEventListener('input',()=>{
+    if(massEntry.value==='')return;
+    const g=gravityValue(),maxInput=inputMode.value==='mass'?Math.max(10000,massGrams):Math.max(10000/1000*g*units[unit.value].factor,forceInputN*units[unit.value].factor);
+    const value=Math.min(maxInput,Math.max(0,Number(massEntry.value)||0));
+    if(inputMode.value==='mass')massGrams=value;
+    else forceInputN=value/units[unit.value].factor;
+    update();
+  });
+  inputMode.addEventListener('change',()=>{
+    const g=gravityValue();
+    if(inputMode.value==='force')forceInputN=massGrams/1000*g;
+    else massGrams=forceInputN/g*1000;
+    update();
+  });
+  [gravity,customG,springType,springCount,unit,customSpringK,springMaterial].forEach(control=>control.addEventListener('input',update));
+  gravity.addEventListener('change',update);
+  unit.addEventListener('change',update);
+  document.querySelectorAll('.preset').forEach(button=>button.addEventListener('click',()=>{
+    const presetGrams=Number(button.dataset.mass),g=gravityValue();
+    if(inputMode.value==='mass')massGrams=presetGrams;
+    else forceInputN=presetGrams/1000*g;
+    update();
+  }));
+  $('#breakSpring').addEventListener('click',()=>{
+    const g=gravityValue(),k=(springType.value==='custom'?Math.max(1,Number(customSpringK.value)||150):springData[springType.value].k)*Number(springCount.value)*materialFactor[springMaterial.value],force=inputMode.value==='mass'?massGrams/1000*g:forceInputN;
+    if(springBroken){
+      if(force/k>.25){$('#warning').textContent='Bu yük yayı tekrar koparır. Önce ağırlığı azalt veya daha sert/çok yay seç.';$('#warning').classList.add('show');return}
+      springBroken=false;brokenPosition=0;update();return;
+    }
+    brokenPosition=Math.min(1,(force/k)/.25)*253;springBroken=true;update();
+  });
+  $('#reset').addEventListener('click',()=>{
+    springBroken=false;brokenPosition=0;massGrams=3000;forceInputN=29.43;inputMode.value='force';gravity.value='9.81';customG.value='9.81';springType.value='extra';springCount.value='1';springMaterial.value='steel';unit.value='N';update();
+  });
+  update();
+})();
+</script><script>
+(()=>{
+ const tabs=[...document.querySelectorAll('.mode-tab')];
+ tabs.forEach(tab=>tab.addEventListener('click',()=>{tabs.forEach(t=>t.classList.toggle('active',t===tab));document.querySelectorAll('.sim-view').forEach(v=>v.hidden=v.id!==tab.dataset.view)}));
+ const left=document.querySelector('#leftMass'),right=document.querySelector('#rightMass'),leftSlider=document.querySelector('#leftSlider'),rightSlider=document.querySelector('#rightSlider'),beam=document.querySelector('#balanceBeam'),gravity=document.querySelector('#balanceGravity'),custom=document.querySelector('#balanceCustomG');
+ const fmt=n=>new Intl.NumberFormat('tr-TR',{maximumFractionDigits:2}).format(n);
+ function update(){let a=Math.max(0,Number(left.value)||0),b=Math.max(0,Number(right.value)||0),range=Math.max(5000,a,b);left.max=range;right.max=range;leftSlider.max=range;rightSlider.max=range;left.value=a;right.value=b;leftSlider.value=a;rightSlider.value=b;document.querySelector('#leftPanLabel').textContent=a>=1000?fmt(a/1000)+' kg':fmt(a)+' g';document.querySelector('#rightPanLabel').textContent=b>=1000?fmt(b/1000)+' kg':fmt(b)+' g';let g=gravity.value==='custom'?Math.max(.01,Number(custom.querySelector('input').value)||9.81):Number(gravity.value),diff=a-b;beam.style.transform='rotate('+Math.max(-18,Math.min(18,-diff/5000*18))+'deg)';document.querySelector('#balanceStatus').textContent=Math.abs(diff)<10?'Denge sağlandı':diff>0?'Sol kefe daha ağır':'Sağ kefe daha ağır';document.querySelector('#torqueInfo').textContent='Moment farkı: '+fmt(Math.abs(diff)/1000*g*.25)+' N·m';custom.hidden=gravity.value!=='custom'}
+ [[left,leftSlider],[right,rightSlider]].forEach(([entry,slider])=>{entry.addEventListener('input',update);slider.addEventListener('input',()=>{entry.value=slider.value;update()})});gravity.addEventListener('change',update);custom.querySelector('input').addEventListener('input',update);document.querySelectorAll('.balance-preset').forEach(btn=>btn.addEventListener('click',()=>{document.querySelector('#'+btn.dataset.side+'Mass').value=btn.dataset.mass;update()}));document.querySelector('#balanceReset').addEventListener('click',()=>{left.value=0;right.value=0;update()});update();
+})();
+</script></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
